@@ -6,50 +6,51 @@
 <style>
 @page { size: 297mm 420mm; margin: 0; }
 * { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --bg: #140a33; --pink: #ff3d8b; }
 html, body { width: 297mm; height: 420mm; }
-body { background: #fff; color: #111; font-family: "Inter", sans-serif;
+body { background: var(--bg); color: #fff; font-family: "Inter", sans-serif;
   -webkit-print-color-adjust: exact; print-color-adjust: exact; overflow: hidden; }
-.poster { width: 297mm; height: 420mm; display: flex; flex-direction: column; }
+.poster { width: 297mm; height: 420mm; position: relative; display: flex; flex-direction: column; }
 
-.photo { height: 198mm; flex-shrink: 0; background: #000; }
-.photo img { width: 100%; height: 100%; object-fit: cover; object-position: 60% 50%; display: block; }
+.photo { position: relative; height: 292mm; flex-shrink: 0; }
+.photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.photo::after { content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(20,10,51,.6) 0%, rgba(20,10,51,0) 18%, rgba(20,10,51,0) 50%, rgba(20,10,51,.9) 80%, var(--bg) 100%); }
+.fach { position: absolute; z-index: 2; top: 13mm; left: 17mm; font-size: 15pt; font-weight: 600; }
 
-.content { flex: 1; padding: 14mm 18mm 0; display: flex; flex-direction: column; }
-.fach { font-size: 14pt; color: #666; margin-bottom: 5mm; }
-h1 { font-family: "Inter Display", "Inter", sans-serif; font-weight: 800; font-size: 74pt; line-height: 1; letter-spacing: -.025em; }
-.frage { font-size: 17pt; line-height: 1.4; color: #555; margin-top: 6mm; max-width: 235mm; }
+.title { position: relative; z-index: 2; margin-top: -96mm; padding: 0 17mm; }
+h1 { font-family: "Inter Display", "Inter", sans-serif; font-weight: 900; font-size: 96pt; line-height: .93; letter-spacing: -.03em; }
+h1 span { color: var(--pink); }
 
-.gruende { margin-top: 16mm; border-top: .6mm solid #111; display: grid; grid-template-columns: 1fr 1fr; column-gap: 14mm; }
-.grund { padding: 5mm 0; border-bottom: .3mm solid #ccc; display: flex; align-items: baseline; gap: 5mm; }
-.grund b { font-family: "Inter Display", "Inter", sans-serif; font-size: 24pt; font-weight: 800; }
-.grund span { font-size: 14pt; color: #555; }
+.words { padding: 17mm 17mm 0; font-family: "Inter Display", "Inter", sans-serif; font-weight: 800; font-size: 27pt; }
+.words i { font-style: normal; color: var(--pink); padding: 0 3mm; }
 
-.aber { margin-top: 16mm; font-family: "Inter Display", "Inter", sans-serif; font-size: 30pt; font-weight: 800; line-height: 1.15; letter-spacing: -.01em; }
-.aber small { display: block; font-family: "Inter", sans-serif; font-size: 15pt; font-weight: 400; color: #666; margin-top: 4mm; letter-spacing: 0; }
+.teaser { margin: 17mm 17mm 0; padding-top: 12mm; border-top: .5mm solid rgba(255,255,255,.3);
+  display: flex; justify-content: space-between; align-items: baseline; gap: 10mm; }
+.teaser b { font-family: "Inter Display", "Inter", sans-serif; font-size: 34pt; font-weight: 800; letter-spacing: -.01em; }
+.teaser span { font-size: 15pt; color: #c8c0e6; text-align: right; }
 
-footer { margin-top: auto; padding: 0 18mm 9mm; display: flex; justify-content: space-between; font-size: 9pt; color: #888; }
+.thema { padding: 14mm 17mm 0; font-size: 13pt; line-height: 1.4; color: #c8c0e6; }
+footer { margin-top: auto; justify-content: flex-end !important; padding: 0 17mm 8mm; display: flex; justify-content: space-between; font-size: 8.5pt; color: #8f86b3; }
 </style>
 </head>
 <body>
 <div class="poster">
-  <div class="photo"><img src="foto.jpg" alt="Jugendliche spielt im dunklen Zimmer einen Ego-Shooter"></div>
-  <div class="content">
+  <div class="photo">
+    <img src="foto.jpg" alt="Junge Gamer mit Headsets auf der Gamescom">
     <div class="fach">Seminarfach Games, Gamer und Gaming</div>
-    <h1>Warum fesselt Gewalt im Game?</h1>
-    <p class="frage">Warum üben Gewaltdarstellungen in Videospielen eine besondere Faszination auf Jugendliche aus?</p>
-
-    <div class="gruende">
-      <div class="grund"><b>Nervenkitzel</b><span>Gefahr ohne echtes Risiko</span></div>
-      <div class="grund"><b>Erfolg</b><span>Jeder Treffer zählt</span></div>
-      <div class="grund"><b>Verbotenes</b><span>„Ab 18“ macht neugierig</span></div>
-      <div class="grund"><b>Freunde</b><span>Mitspielen heißt mitreden</span></div>
-    </div>
-
-    <p class="aber">Aber ist es wirklich die Gewalt, die Spaß macht?<small>Die Antwort gibt’s in meiner Präsentation.</small></p>
   </div>
+  <div class="title">
+    <h1>Warum fesselt<br><span>Gewalt</span> im Game?</h1>
+  </div>
+  <div class="words">Nervenkitzel<i>·</i>Erfolg<i>·</i>Verbotenes<i>·</i>Freunde</div>
+  <div class="teaser">
+    <b>Oder steckt was anderes dahinter?</b>
+    <span>Mehr in meiner<br>Präsentation</span>
+  </div>
+  <p class="thema">Thema: Warum üben Gewaltdarstellungen in Videospielen eine besondere Faszination auf Jugendliche aus?</p>
   <footer>
-    <div>Seminarfach 2026</div>
-    <div>Foto: verkeorg, Wikimedia Commons, CC BY-SA 2.0</div>
+    <div>Foto: Sergiy Galyonkin, Wikimedia Commons, CC BY-SA 2.0</div>
   </footer>
 </div>
 </body>
