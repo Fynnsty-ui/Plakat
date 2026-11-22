@@ -2,218 +2,84 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<title>Gewalt in Videospielen</title>
+<title>Gewalt im Game</title>
 <style>
 @page { size: 297mm 420mm; margin: 0; }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --ink: #14141f;
-  --muted: #4a4a5c;
-  --bg: #f4f2ee;
-  --card: #ffffff;
-  --red: #d7263d;
-  --dark: #1b1b2f;
-  --cyan: #1fb5c9;
-  --line: #dedad2;
-}
+:root { --red: #e3263b; --dark: #111118; --cyan: #22c3d6; }
 html, body { width: 297mm; height: 420mm; }
-body {
-  background: var(--bg); color: var(--ink);
-  font-family: "Inter", "DejaVu Sans", sans-serif;
-  -webkit-print-color-adjust: exact; print-color-adjust: exact;
-  overflow: hidden;
-}
-.poster { width: 297mm; height: 420mm; display: flex; flex-direction: column; }
+body { background: var(--dark); color: #fff; font-family: "Inter", sans-serif;
+  -webkit-print-color-adjust: exact; print-color-adjust: exact; overflow: hidden; }
+.poster { width: 297mm; height: 420mm; position: relative; display: flex; flex-direction: column; }
 
-/* Header */
-header { flex-shrink: 0;
-  background: var(--dark); color: #fff; padding: 13mm 16mm 10mm;
-  position: relative; overflow: hidden;
-}
-header::after { /* pixel decoration */
-  content: ""; position: absolute; right: 10mm; top: 10mm; width: 60mm; height: 60mm;
-  background:
-    linear-gradient(var(--red),var(--red)) 0 0/6mm 6mm no-repeat,
-    linear-gradient(var(--red),var(--red)) 12mm 6mm/6mm 6mm no-repeat,
-    linear-gradient(var(--cyan),var(--cyan)) 24mm 0/6mm 6mm no-repeat,
-    linear-gradient(var(--red),var(--red)) 36mm 12mm/6mm 6mm no-repeat,
-    linear-gradient(#ffffff33,#ffffff33) 48mm 0/6mm 6mm no-repeat,
-    linear-gradient(var(--cyan),var(--cyan)) 48mm 18mm/6mm 6mm no-repeat,
-    linear-gradient(#ffffff33,#ffffff33) 30mm 24mm/6mm 6mm no-repeat,
-    linear-gradient(var(--red),var(--red)) 54mm 30mm/6mm 6mm no-repeat;
-}
-.kicker {
-  font-family: "Inter Display", "Inter", sans-serif;
-  font-size: 13pt; letter-spacing: .18em; text-transform: uppercase;
-  color: var(--cyan); font-weight: 700; margin-bottom: 6mm;
-}
-h1 {
-  font-family: "Inter Display", "Inter", sans-serif;
-  font-size: 46pt; line-height: 1.04; font-weight: 800; letter-spacing: -.02em;
-  max-width: 225mm;
-}
+.photo { position: relative; height: 205mm; flex-shrink: 0; overflow: hidden; }
+.photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block; }
+.photo::after { content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(17,17,24,.55) 0%, rgba(17,17,24,0) 20%, rgba(17,17,24,0) 82%, var(--dark) 100%); }
+.kicker { position: absolute; z-index: 2; top: 13mm; left: 16mm; font-family: "Inter Display", "Inter", sans-serif;
+  font-weight: 800; font-size: 15pt; letter-spacing: .2em; text-transform: uppercase; }
+.kicker span { color: var(--cyan); }
+.pixels { position: absolute; z-index: 2; top: 12mm; right: 14mm; display: grid; grid-template-columns: repeat(4, 7mm); gap: 3mm; }
+.pixels i { width: 7mm; height: 7mm; display: block; }
+.r { background: var(--red); } .c { background: var(--cyan); } .w { background: rgba(255,255,255,.35); } .n { background: transparent; }
+
+.title { position: relative; z-index: 2; padding: 0 16mm; margin-top: -6mm; }
+h1 { font-family: "Inter Display", "Inter", sans-serif; font-weight: 900; font-size: 88pt; line-height: .95; letter-spacing: -.03em; }
 h1 em { font-style: normal; color: var(--red); }
-.lead {
-  margin-top: 5mm; font-size: 14pt; line-height: 1.45; color: #d9d9e6; max-width: 235mm;
-}
+.question { margin-top: 6mm; font-size: 17pt; line-height: 1.35; color: #c9c9d6; max-width: 240mm; }
 
-main { flex: 1 0 auto; padding: 8mm 16mm 0; display: flex; flex-direction: column; gap: 6mm; }
+.reasons { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5mm; padding: 13mm 16mm 0; }
+.reason { border-top: 1.6mm solid var(--red); padding-top: 5mm; }
+.reason:nth-child(even) { border-color: var(--cyan); }
+.reason h2 { font-family: "Inter Display", "Inter", sans-serif; font-weight: 900; font-size: 25pt; letter-spacing: -.01em; margin-bottom: 3mm; }
+.reason p { font-size: 14pt; line-height: 1.35; color: #d4d4de; }
 
-.section-title {
-  font-family: "Inter Display", "Inter", sans-serif;
-  font-size: 22pt; font-weight: 800; letter-spacing: -.01em;
-  display: flex; align-items: center; gap: 4mm;
-}
-.section-title::before { content: ""; width: 5mm; height: 5mm; background: var(--red); }
+.spoiler { margin: 13mm 16mm 0; background: var(--red); border-radius: 3mm; padding: 8mm 10mm;
+  display: flex; align-items: center; justify-content: space-between; gap: 8mm; }
+.spoiler .label { font-size: 13pt; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; opacity: .85; margin-bottom: 2mm; }
+.spoiler .text { font-family: "Inter Display", "Inter", sans-serif; font-size: 32pt; font-weight: 900; line-height: 1.05; letter-spacing: -.01em; }
+.spoiler .src { font-size: 11pt; opacity: .85; margin-top: 3mm; }
+.spoiler .arrow { font-family: "Inter Display", "Inter", sans-serif; font-size: 15pt; font-weight: 800; text-align: right; line-height: 1.3; flex-shrink: 0; }
 
-.grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 5mm; }
-.card {
-  background: var(--card); border: 0.4mm solid var(--line); border-radius: 3mm;
-  padding: 5mm 6mm 5mm; position: relative;
-}
-.card .num {
-  font-family: "Inter Display", "Inter", sans-serif;
-  position: absolute; right: 5mm; top: 4mm; font-size: 24pt; font-weight: 800; color: #ece8e0;
-}
-.card h3 {
-  font-family: "Inter Display", "Inter", sans-serif;
-  font-size: 15pt; font-weight: 800; margin-bottom: 1.5mm; padding-right: 13mm; line-height: 1.15;
-}
-.card .theory { font-size: 8.5pt !important;
-  display: inline-block; font-size: 9.5pt; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
-  color: var(--red); margin-bottom: 3mm;
-}
-.card p { font-size: 11pt; line-height: 1.45; color: #2b2b38; }
-.card p b { color: var(--ink); }
-
-/* Key finding */
-.finding {
-  display: grid; grid-template-columns: 62mm 1fr; gap: 8mm; align-items: center;
-  background: var(--red); color: #fff; border-radius: 3mm; padding: 6mm 8mm;
-}
-.finding .big {
-  font-family: "Inter Display", "Inter", sans-serif;
-  font-size: 22pt; font-weight: 800; line-height: 1.1;
-}
-.finding p { font-size: 13.5pt; line-height: 1.45; }
-.finding small { display: block; margin-top: 2mm; font-size: 10pt; opacity: .85; }
-
-.two { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
-.box { border-radius: 3mm; padding: 6mm; }
-.box.debate { background: #fff; border: 0.4mm solid var(--line); }
-.box.fazit { background: var(--dark); color: #fff; }
-.box h3 {
-  font-family: "Inter Display", "Inter", sans-serif;
-  font-size: 17pt; font-weight: 800; margin-bottom: 3mm;
-}
-.box.fazit h3 { color: var(--cyan); }
-.box p, .box li { font-size: 11.8pt; line-height: 1.45; }
-.box ul { padding-left: 5mm; margin-top: 2mm; }
-.box li { margin-bottom: 1.5mm; }
-.vs { display: grid; grid-template-columns: 1fr auto 1fr; gap: 3mm; align-items: stretch; margin: 2mm 0 3mm; }
-.vs div { background: #f4f2ee; border-radius: 2mm; padding: 3mm 3.5mm; font-size: 10.5pt; line-height: 1.4; }
-.vs span { align-self: center; font-weight: 800; color: var(--red); font-size: 12pt; }
-.vs b { display: block; font-size: 10.5pt; margin-bottom: 1mm; }
-
-footer { flex-shrink: 0;
-  margin-top: auto; padding: 5mm 16mm 7mm; border-top: 0.4mm solid var(--line);
-  display: grid; grid-template-columns: 1fr;
-}
-.sources h4 { font-size: 10pt; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 2mm; color: var(--muted); }
-.sources ol { columns: 3; column-gap: 7mm; padding-left: 4mm; }
-.sources li { font-size: 7pt; line-height: 1.35; color: var(--muted); margin-bottom: 1mm; break-inside: avoid; }
-.meta { font-size: 10pt; color: var(--muted); line-height: 1.5; text-align: right; align-self: end; }
-.meta b { color: var(--ink); display: block; font-size: 11pt; }
+footer { margin-top: auto; padding: 0 16mm 8mm; display: flex; justify-content: space-between; align-items: end;
+  font-size: 9pt; color: #8a8a99; }
 </style>
 </head>
 <body>
 <div class="poster">
-  <header>
-    <div class="kicker">Seminarfach · Games, Gamer und Gaming · 2026</div>
-    <h1>Warum faszinieren <em>Gewaltdarstellungen</em> in Videospielen Jugendliche?</h1>
-    <p class="lead">Shooter, Battle-Royale, Action-Adventures: Viele Lieblingsspiele enthalten Gewalt. Doch es ist selten die Gewalt <i>an sich</i>, die fasziniert – sondern was sie im Spiel möglich macht.</p>
-  </header>
-
-  <main>
-    <div class="section-title">Sechs Gründe für die Faszination</div>
-    <div class="grid">
-      <div class="card"><div class="num">01</div>
-        <h3>Nervenkitzel</h3>
-        <span class="theory">Sensation Seeking · Zuckerman</span>
-        <p>Jugendliche suchen besonders stark nach <b>neuen, intensiven Reizen</b>. Kampf und Gefahr liefern Adrenalin – ganz ohne echtes Risiko.</p>
-      </div>
-      <div class="card"><div class="num">02</div>
-        <h3>Können &amp; Kontrolle</h3>
-        <span class="theory">Selbstbestimmungstheorie · Flow</span>
-        <p>Treffer, Siege und Level-Ups geben <b>sofortiges Feedback</b> über das eigene Können. Man fühlt sich kompetent und selbstbestimmt.</p>
-      </div>
-      <div class="card"><div class="num">03</div>
-        <h3>Reiz des Verbotenen</h3>
-        <span class="theory">„Forbidden Fruit“-Effekt</span>
-        <p><b>„USK ab 18“</b> macht Spiele für Jüngere oft erst interessant. In der Pubertät gehört es dazu, <b>Grenzen auszutesten</b>.</p>
-      </div>
-      <div class="card"><div class="num">04</div>
-        <h3>Gemeinschaft &amp; Status</h3>
-        <span class="theory">Peergroup · Multiplayer</span>
-        <p>Wer mitspielt, kann <b>mitreden</b>. Teamplay und Ranglisten schaffen Zugehörigkeit; „harte“ Spiele werden zur <b>Mutprobe</b>.</p>
-      </div>
-      <div class="card"><div class="num">05</div>
-        <h3>Frust abbauen</h3>
-        <span class="theory">Mood Management · Zillmann</span>
-        <p>Medien werden genutzt, um die <b>Stimmung zu regulieren</b>. Action lenkt von Schulstress ab und lässt Ärger „herausspielen“.</p>
-      </div>
-      <div class="card"><div class="num">06</div>
-        <h3>Sichere Fiktion</h3>
-        <span class="theory">Moralisches Distanzieren · Klimmt</span>
-        <p><b>„Es ist nur ein Spiel.“</b> Niemand wird wirklich verletzt. So lassen sich <b>Macht, Heldentum und fremde Rollen</b> gefahrlos ausprobieren.</p>
-      </div>
+  <div class="photo">
+    <img src="foto.jpg" alt="Jugendlicher spielt konzentriert mit einem Controller">
+    <div class="kicker">Games, Gamer <span>&amp;</span> Gaming</div>
+    <div class="pixels">
+      <i class="r"></i><i class="n"></i><i class="c"></i><i class="w"></i>
+      <i class="n"></i><i class="r"></i><i class="n"></i><i class="r"></i>
+      <i class="w"></i><i class="n"></i><i class="c"></i><i class="n"></i>
+    </div>
+  </div>
+    <div class="title">
+      <h1>Warum fesselt<br><em>Gewalt</em> im Game?</h1>
+      <p class="question">Warum üben Gewaltdarstellungen in Videospielen eine besondere Faszination auf Jugendliche aus?</p>
     </div>
 
-    <div class="finding">
-      <div class="big">Nicht die Gewalt selbst macht den Spaß.</div>
-      <p>In Studien von Przybylski, Ryan &amp; Rigby (2009) steigerte Gewalt den Spielspaß kaum. Entscheidend war, ob sich Spielende <b>kompetent, frei und gefordert</b> fühlten. Gewalt ist oft nur die „Verpackung“ für Erfolgserlebnisse.
-        <small>Przybylski et al. (2009), Personality and Social Psychology Bulletin</small></p>
-    </div>
+  <div class="reasons">
+    <div class="reason"><h2>Adrenalin</h2><p>Der Kick von Gefahr – ganz ohne echtes Risiko.</p></div>
+    <div class="reason"><h2>Kontrolle</h2><p>Jeder Treffer zeigt: Ich kann was.</p></div>
+    <div class="reason"><h2>Verboten</h2><p>„Ab 18“ macht erst recht neugierig.</p></div>
+    <div class="reason"><h2>Zusammen</h2><p>Wer mitspielt, kann mitreden.</p></div>
+  </div>
 
-    <div class="two">
-      <div class="box debate">
-        <h3>Macht das aggressiv? Die Debatte</h3>
-        <div class="vs">
-          <div><b>Anderson &amp; Bushman</b>Kurzfristig können aggressive Gedanken und Gefühle zunehmen.</div>
-          <span>vs.</span>
-          <div><b>Ferguson</b>Effekte sind sehr klein; kein belegter Zusammenhang mit realer schwerer Gewalt.</div>
-        </div>
-        <p>Die Forschung ist <b>uneinig</b>. Umfeld und Persönlichkeit zählen mehr als das Spiel allein.</p>
-      </div>
-      <div class="box fazit">
-        <h3>Fazit</h3>
-        <p>Gewalt in Videospielen fasziniert Jugendliche, weil sie <b>Spannung, Erfolgserlebnisse, Zugehörigkeit
-          und Grenzerfahrungen</b> in einem sicheren Rahmen bietet.</p>
-        <ul>
-          <li>Sie passt zu typischen Bedürfnissen der Jugendphase.</li>
-          <li>Medienkompetenz und Gespräche statt pauschaler Verbote.</li>
-        </ul>
-      </div>
+  <div class="spoiler">
+    <div>
+      <div class="label">Spoiler</div>
+      <div class="text">Die Gewalt selbst ist es selten.</div>
+      <div class="src">Przybylski, Ryan &amp; Rigby (2009)</div>
     </div>
-  </main>
+    <div class="arrow">Was dann?<br>Mehr in meiner<br>Präsentation&nbsp;→</div>
+  </div>
 
   <footer>
-    <div class="sources">
-      <h4>Quellen</h4>
-      <ol>
-        <li>Anderson, C. A. &amp; Bushman, B. J. (2001). Effects of violent video games on aggressive behavior. <i>Psychological Science, 12</i>(5), 353–359.</li>
-        <li>Bushman, B. J. &amp; Stack, A. D. (1996). Forbidden fruit versus tainted fruit. <i>Journal of Experimental Psychology: Applied, 2</i>(3), 207–226.</li>
-        <li>Csikszentmihalyi, M. (1990). <i>Flow: The psychology of optimal experience.</i> Harper &amp; Row.</li>
-        <li>Ferguson, C. J. (2015). Do angry birds make for angry children? <i>Perspectives on Psychological Science, 10</i>(5), 646–666.</li>
-        <li>Goldstein, J. (Hrsg.) (1998). <i>Why we watch: The attractions of violent entertainment.</i> Oxford University Press.</li>
-        <li>Hartmann, T. &amp; Vorderer, P. (2010). It’s okay to shoot a character. <i>Journal of Communication, 60</i>(1), 94–119.</li>
-        <li>Klimmt, C., Schmid, H., Nosper, A., Hartmann, T. &amp; Vorderer, P. (2006). How players manage moral concerns to make video game violence enjoyable. <i>Communications, 31</i>(3), 309–328.</li>
-        <li>Przybylski, A. K., Ryan, R. M. &amp; Rigby, C. S. (2009). The motivating role of violence in video games. <i>Personality and Social Psychology Bulletin, 35</i>(2), 243–259.</li>
-        <li>Ryan, R. M., Rigby, C. S. &amp; Przybylski, A. (2006). The motivational pull of video games. <i>Motivation and Emotion, 30</i>, 347–363.</li>
-        <li>Zillmann, D. (1988). Mood management through communication choices. <i>American Behavioral Scientist, 31</i>(3), 327–340.</li>
-        <li>Zuckerman, M. (1994). <i>Behavioral expressions and biosocial bases of sensation seeking.</i> Cambridge University Press.</li>
-      </ol>
-    </div>
+    <div>Seminarfach „Games, Gamer und Gaming“ · 2026</div>
+    <div>Foto: Vadermonk, „Boy Gamer“, Wikimedia Commons, CC BY-SA 4.0</div>
   </footer>
 </div>
 </body>
