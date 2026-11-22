@@ -6,19 +6,19 @@
 <style>
 @page { size: 297mm 420mm; margin: 0; }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-:root { --bg: #140a33; --pink: #ff3d8b; }
+:root { --bg: #0b1426; --pink: #ff3b30; }
 html, body { width: 297mm; height: 420mm; }
 body { background: var(--bg); color: #fff; font-family: "Inter", sans-serif;
   -webkit-print-color-adjust: exact; print-color-adjust: exact; overflow: hidden; }
 .poster { width: 297mm; height: 420mm; position: relative; display: flex; flex-direction: column; }
 
-.photo { position: relative; height: 292mm; flex-shrink: 0; }
+.photo { position: relative; height: 215mm; flex-shrink: 0; }
 .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .photo::after { content: ""; position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(20,10,51,.6) 0%, rgba(20,10,51,0) 18%, rgba(20,10,51,0) 50%, rgba(20,10,51,.9) 80%, var(--bg) 100%); }
+  background: linear-gradient(180deg, rgba(11,20,38,.55) 0%, rgba(11,20,38,0) 15%, rgba(11,20,38,0) 70%, rgba(11,20,38,.85) 90%, var(--bg) 100%); }
 .fach { position: absolute; z-index: 2; top: 13mm; left: 17mm; font-size: 15pt; font-weight: 600; }
 
-.title { position: relative; z-index: 2; margin-top: -96mm; padding: 0 17mm; }
+.title { position: relative; z-index: 2; margin-top: -14mm; padding: 0 17mm; }
 h1 { font-family: "Inter Display", "Inter", sans-serif; font-weight: 900; font-size: 96pt; line-height: .93; letter-spacing: -.03em; }
 h1 span { color: var(--pink); }
 
@@ -28,16 +28,16 @@ h1 span { color: var(--pink); }
 .teaser { margin: 17mm 17mm 0; padding-top: 12mm; border-top: .5mm solid rgba(255,255,255,.3);
   display: flex; justify-content: space-between; align-items: baseline; gap: 10mm; }
 .teaser b { font-family: "Inter Display", "Inter", sans-serif; font-size: 34pt; font-weight: 800; letter-spacing: -.01em; }
-.teaser span { font-size: 15pt; color: #c8c0e6; text-align: right; }
+.teaser span { font-size: 15pt; color: #b9c6dd; text-align: right; }
 
-.thema { padding: 14mm 17mm 0; font-size: 13pt; line-height: 1.4; color: #c8c0e6; }
-footer { margin-top: auto; justify-content: flex-end !important; padding: 0 17mm 8mm; display: flex; justify-content: space-between; font-size: 8.5pt; color: #8f86b3; }
+.thema { padding: 14mm 17mm 0; font-size: 13pt; line-height: 1.4; color: #b9c6dd; }
+footer { margin-top: auto; justify-content: flex-end !important; padding: 0 17mm 8mm; display: flex; justify-content: space-between; font-size: 8.5pt; color: #7f8fab; }
 </style>
 </head>
 <body>
 <div class="poster">
   <div class="photo">
-    <img src="foto.jpg" alt="Junge Gamer mit Headsets auf der Gamescom">
+    <img src="foto.jpg" alt="Jugendlicher spielt im Kinderzimmer einen Ego-Shooter">
     <div class="fach">Seminarfach Games, Gamer und Gaming</div>
   </div>
   <div class="title">
@@ -50,7 +50,7 @@ footer { margin-top: auto; justify-content: flex-end !important; padding: 0 17mm
   </div>
   <p class="thema">Thema: Warum üben Gewaltdarstellungen in Videospielen eine besondere Faszination auf Jugendliche aus?</p>
   <footer>
-    <div>Foto: Sergiy Galyonkin, Wikimedia Commons, CC BY-SA 2.0</div>
+    <div></div>
   </footer>
 </div>
 </body>
