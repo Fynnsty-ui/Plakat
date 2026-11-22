@@ -22,13 +22,11 @@ body { background: var(--bg); color: #fff; font-family: "Inter", sans-serif;
 h1 { font-family: "Inter Display", "Inter", sans-serif; font-weight: 900; font-size: 60pt; line-height: 1.02; letter-spacing: -.025em; }
 h1 span { color: var(--pink); }
 
-.words { padding: 12mm 17mm 0; font-family: "Inter Display", "Inter", sans-serif; font-weight: 800; font-size: 27pt; }
-.words i { font-style: normal; color: var(--pink); padding: 0 3mm; }
 
-.teaser { margin: 12mm 17mm 0; padding-top: 9mm; border-top: .5mm solid rgba(255,255,255,.3);
-  display: flex; justify-content: space-between; align-items: baseline; gap: 10mm; }
-.teaser b { font-family: "Inter Display", "Inter", sans-serif; font-size: 34pt; font-weight: 800; letter-spacing: -.01em; }
-.teaser span { font-size: 15pt; color: #b9c6dd; text-align: right; }
+.fragen { list-style: none; margin: 13mm 17mm 0; border-top: .4mm solid rgba(255,255,255,.22); }
+.fragen li { display: flex; align-items: baseline; gap: 7mm; padding: 4.2mm 0; border-bottom: .4mm solid rgba(255,255,255,.22);
+  font-size: 18pt; font-weight: 500; color: #fff; }
+.fragen span { font-family: "Inter Display", "Inter", sans-serif; font-weight: 800; font-size: 13pt; color: var(--pink); letter-spacing: .08em; min-width: 10mm; }
 
 .thema { padding: 14mm 17mm 0; font-size: 13pt; line-height: 1.4; color: #b9c6dd; }
 .name { font-size: 15pt; color: #b9c6dd; line-height: 1.35; }
@@ -44,11 +42,11 @@ footer { margin-top: auto; padding: 0 17mm 12mm; display: flex; justify-content:
   <div class="title">
     <h1>Warum üben<br><span>Gewaltdarstellungen</span> in Videospielen eine besondere Faszination auf Jugendliche aus?</h1>
   </div>
-  <div class="words">Nervenkitzel<i>·</i>Erfolg<i>·</i>Verbotenes<i>·</i>Freunde</div>
-  <div class="teaser">
-    <b>Oder steckt was anderes dahinter?</b>
-    <span>Mehr in meiner<br>Präsentation</span>
-  </div>
+  <ol class="fragen">
+    <li><span>01</span>Warum suchen wir den Nervenkitzel?</li>
+    <li><span>02</span>Was reizt uns an Macht und Kontrolle?</li>
+    <li><span>03</span>Warum spielen Wettbewerb und Freunde eine Rolle?</li>
+  </ol>
   <footer>
     <div class="name"><b>Fynn Groeger</b>Seminarfach Games, Gamer und Gaming</div>
   </footer>
